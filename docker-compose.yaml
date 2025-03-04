@@ -9,6 +9,8 @@ services:
     depends_on:
       - app
       - db
+    networks:
+      - desafio
 
   app:
     build:
@@ -21,6 +23,8 @@ services:
     tty: true
     depends_on:
       - db
+    networks:
+      - desafio
 
   db:
     image: mysql:5.7
@@ -33,3 +37,9 @@ services:
     environment:
       - MYSQL_DATABASE=nodedb
       - MYSQL_ROOT_PASSWORD=password
+    networks:
+      - desafio
+
+networks:
+  desafio:
+    driver: bridge
